@@ -1,0 +1,39 @@
+<h1 class="text text-center">Tabela de descrição de Produto</h1>
+<div class="row">
+    <div class="col-8 m-auto">
+        <form  [formGroup]="formGroupClient">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nome: </label>
+                <input type="text" formControlName="name" class="form-control" id="nome" placeholder="nome">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email: </label>
+                <input type="email" formControlName="email" class="form-control" id="email" placeholder="name@email.com">
+            </div>
+            <div class="mb-3 d-flex justify-content-end">
+                <button type="button" class="btn btn-primary" (click)="save()">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<table class="table container">
+    <thead>
+      <tr class="top">
+        <th scope="col">ID</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Email</th>
+        <th class="d-flex justify-content-end" scope="col">Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clients">
+        <th scope="row">{{cliente.id}}</th>
+        <td>{{cliente.name}}</td>
+        <td>{{cliente.email}}</td>
+        <td class="d-flex justify-content-end">
+            <button class="btn btn-danger me-1" (click)="remove(cliente)">Excluir</button>
+            <button class="btn btn-primary" (click)="edit(cliente)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
